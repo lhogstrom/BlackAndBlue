@@ -1,0 +1,46 @@
+// 06192015 | Karthik 
+// Renaming Files directly from Confocal folder | Fiji Macro
+
+SourceDir = "C:\\Users\\Karthik\\Documents\\20150617\\All\\";
+SaveDir = "C:\\Users\\Karthik\\Documents\\20150617\\Saved\\";
+
+freq_array = newArray(405, 488, 561, 640);
+print("Number of Channels = " + freq_array.length);
+
+start_field_number = 18; 
+end_field_number = 33; 
+
+//for(i=0; i<freq_array.length; i++){
+//freq = toString(freq_array[i],0);
+
+list = getFileList(SourceDir);
+print("Number of Files in the Directory = " + list.length); //This should be a multiple of [freq_array.length+1]. +1 is because the .nd file is also saved for each image set. 
+       
+i = (start_field_number - 1) * (freq_array.length + 1);
+limit = (end_field_number) * (freq_array.length + 1);
+
+print("i = " + i);
+print("limit = " + limit);
+
+num = 0; //Field Count will start from 1 for convenience.
+
+while(i < limit){
+	
+	if(i % (freq_array.length + 1) == 0){
+		print(" ");
+		i = i + 1;
+		num = num + 1;
+	}
+	
+	num2 = toString(num,0); 
+	if(num < 10){
+		num2 = "0" + num2;
+	}
+	
+	freq = toString(freq_array[i % (freq_array.length + 1) - 1],0);
+	
+	print(list[i] + "    -->>    " + freq + "_" + num2 + ".TIF" ); //Old file name and new file name. 
+	File.copy(SourceDir + list[i], SaveDir + freq + "_" + num2 + ".TIF");//Copy operation
+	i++;	
+		
+}
