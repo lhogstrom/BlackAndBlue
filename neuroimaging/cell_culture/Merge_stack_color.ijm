@@ -1,4 +1,5 @@
 // load files 
+// Commit check
 // open("/Users/hogstrom/Dropbox (MIT)/imaging_data/20150520/primary_neuron_20150520_2_w1Conf 640.TIF");
 // open("/Users/hogstrom/Dropbox (MIT)/imaging_data/20150520/primary_neuron_20150520_2_w2Conf 488.TIF");
 // open("/Users/hogstrom/Dropbox (MIT)/imaging_data/20150520/primary_neuron_20150520_2_w3Conf 561.TIF");
