@@ -1,0 +1,40 @@
+// 06192015 | Karthik 
+// Stitching for all four channels | Fiji Macro
+
+//Image files have been ordered and renamed as <AlexaFluorLabel>_<FieldNumber> based on rename_confocal.txt. 
+
+SourceDir = "C:\\Users\\Karthik\\Documents\\20150617\\Saved\\"; 
+
+freq_array = newArray(405, 488, 561, 640);
+print("Number of Channels = " + freq_array.length);
+
+for(i=0; i<freq_array.length; i++){
+
+	freq = toString(freq_array[i],0);
+	
+	for(num=1; num<=16; num++){
+		
+		num2 = toString(num,0); 
+		if (num < 10) 
+			num2 = "0" + num2;
+		
+		open(SourceDir + freq + "_" + num2 + ".TIF");
+		
+		//run("8-bit"); //Unsure if auto-contrast is required always. 
+		
+		if(num == 1){
+			//run("Enhance Contrast", "saturated=0.35");
+			//run("Apply LUT");
+			//getRawStatistics(min, max);
+			//print("Channel: " + freq + " Contrast Settings (Min/Max): " + min + "/" + max);
+		}
+		
+		//setMinAndMax(min, max);
+		
+	}
+	print("Starting to Stitch.");
+	run("Grid/Collection stitching", "type=[Grid: snake by rows] order=[Left & Up] grid_size_x=4 grid_size_y=4 tile_overlap=15 first_file_index_i=1 directory=C:\\Users\\Karthik\\Documents\\20150617\\Saved file_names=["+freq+"_{ii}.TIF] output_textfile_name=TileConfiguration.txt fusion_method=[Linear Blending] regression_threshold=0.30 max/avg_displacement_threshold=2.50 absolute_displacement_threshold=3.50 compute_overlap computation_parameters=[Save memory (but be slower)] image_output=[Fuse and display]");
+	
+	saveAs("Tiff", SourceDir + "Fused " + freq + ".TIF");
+	
+}
