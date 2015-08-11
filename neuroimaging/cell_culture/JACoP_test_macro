@@ -1,0 +1,11 @@
+run("JACoP ");
+selectWindow("SYN1_GLU1_F7_2_02_w2Conf 488.TIF");
+selectWindow("SYN1_GLU1_F7_2_02_w3Conf 561.TIF");
+selectWindow("SYN1_GLU1_F7_2_02_w2Conf 488.TIF");
+selectWindow("SYN1_GLU1_F7_2_02_w3Conf 561.TIF");
+run("JACoP ", "imga=[SYN1_GLU1_F7_2_02_w2Conf 488.TIF] imgb=[SYN1_GLU1_F7_2_02_w3Conf 561.TIF] thra=971 thrb=746 pearson overlap mm cytofluo");
+selectWindow("Cytofluorogram between SYN1_GLU1_F7_2_02_w2Conf 488.TIF and SYN1_GLU1_F7_2_02_w3Conf 561.TIF");
+saveAs("Text", "/Users/hogstrom/Dropbox (MIT)/imaging_data/20150716/analysis/jacop_log.txt");
+selectWindow("SYN1_GLU1_F7_2_02_w3Conf 561.TIF");
+selectWindow("SYN1_GLU1_F7_2_02_w2Conf 488.TIF");
+saveAs("Tiff", "/Users/hogstrom/Dropbox (MIT)/imaging_data/20150716/analysis/SYN1_GLU1_F7_2_02_w2Conf 488_thresh.tif");
