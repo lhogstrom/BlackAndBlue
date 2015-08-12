@@ -25,9 +25,9 @@
 
 // perform JACoP - intensity-based colocalization analysis
 well_num = "F7";
-series = 3;
-imageCount = 17
-for (image = 9; image <= imageCount; image++) {
+series = 2;
+imageCount = 9
+for (image = 1; image <= imageCount; image++) {
     if (image <=9){
         str_n = "0" + image;
     }
